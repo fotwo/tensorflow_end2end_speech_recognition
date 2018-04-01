@@ -25,6 +25,7 @@ from utils.directory import mkdir_join, mkdir
 from utils.parameter import count_total_parameters
 from models.attention.attention_seq2seq import AttentionSeq2Seq
 
+from pudb import set_trace
 
 def do_train(model, params):
     """Run training. If target labels are phone, the model is evaluated by PER
@@ -284,6 +285,7 @@ def do_train(model, params):
                                 eval_batch_size=1)
                             print('  PER: %f %%' % (ler_dev_epoch * 100))
 
+
                             if ler_dev_epoch < ler_dev_best:
                                 ler_dev_best = ler_dev_epoch
                                 print('■■■ ↑Best Score (PER)↑ ■■■')
@@ -297,6 +299,7 @@ def do_train(model, params):
                                 print("Model saved in file: %s" % save_path)
 
                                 print('=== Test Data Evaluation ===')
+                                # set_trace()
                                 ler_test = do_eval_per(
                                     session=sess,
                                     decode_op=decode_op_infer,
@@ -441,4 +444,5 @@ if __name__ == '__main__':
     args = sys.argv
     if len(args) != 3:
         raise ValueError('Length of args should be 3.')
+    # set_trace()
     main(config_path=args[1], model_save_path=args[2])
