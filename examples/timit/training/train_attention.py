@@ -125,8 +125,13 @@ def do_train(model, params):
 
         csv_steps, csv_loss_train, csv_loss_dev = [], [], []
         csv_ler_train, csv_ler_dev = [], []
+
+        # Let gpu use the minimal memory according to the situation.
+        gpu_config=tf.ConfigProto()
+        gpu_config.gpu_options.allow_growth=True
+
         # Create a session for running operation on the graph
-        with tf.Session() as sess:
+        with tf.Session(config=gpu_config) as sess:
 
             # Instantiate a SummaryWriter to output summaries and the graph
             summary_writer = tf.summary.FileWriter(
