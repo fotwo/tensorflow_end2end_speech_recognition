@@ -103,7 +103,7 @@ def do_eval_per(session, decode_op, per_op, model, dataset, label_type,
             # Reference
             ###############
             if is_test:
-                phone_true_list = labels_true[0][i_batch][0].split(' ')
+                phone_true_list = labels_true[0][i_batch][0][0].split(' ')
             else:
                 # Convert from index to phone (-> list of phone strings)
                 phone_true_list = idx2phone_eval(
