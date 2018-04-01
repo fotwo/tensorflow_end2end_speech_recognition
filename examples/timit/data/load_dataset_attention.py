@@ -62,9 +62,10 @@ class Dataset(DatasetBase):
         self.num_gpu = 1
 
         # paths where datasets exist
-        dataset_root = ['/data/inaguma/timit',
-                        '/n/sd8/inaguma/corpus/timit/dataset']
+        # dataset_root = ['/data/inaguma/timit',
+        #                 '/n/sd8/inaguma/corpus/timit/dataset']
 
+        dataset_root = ['/home/shrc/work/tfe2e/tensorflow_end2end_speech_recognition/examples/timit']
         input_path = join(dataset_root[0], 'inputs', data_type)
         # NOTE: ex.) save_path: timit_dataset_path/inputs/data_type/***.npy
         label_path = join(dataset_root[0], 'labels', data_type, label_type)
